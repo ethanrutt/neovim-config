@@ -3,7 +3,7 @@ return {
     'folke/which-key.nvim',
     config = function()
         -- document existing key chains
-        require('which-key').register {
+        require('which-key').add({
             { "<leader>c", group = "[C]ode / Quickfix" },
             { "<leader>c_", hidden = true },
             { "<leader>d", group = "[D]ocument / delete to void register" },
@@ -18,6 +18,6 @@ return {
             { "<leader>s_", hidden = true },
             { "<leader>w", group = "[W]orkspace" },
             { "<leader>w_", hidden = true },
-        }
+        })
     end
 }
