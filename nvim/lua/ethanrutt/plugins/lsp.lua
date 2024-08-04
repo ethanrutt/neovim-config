@@ -73,9 +73,17 @@ return {
         local servers = {
             lua_ls = {
                 Lua = {
-                    workspace = { checkThirdParty = false },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            -- Add other libraries here that you want lsp support for
+                            -- "/usr/share/awesome/lib",
+                            -- "~/.config/awesome",
+                            -- "/usr/share/lua/5.3/lain",
+                        },
+                    },
                     runtime = { version = "LuaJIT" },
-                    library = { vim.env.VIMRUNTIME },
                 },
             },
             clangd = {},
