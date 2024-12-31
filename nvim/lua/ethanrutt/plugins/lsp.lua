@@ -78,15 +78,25 @@ return {
                         library = {
                             vim.env.VIMRUNTIME,
                             -- Add other libraries here that you want lsp support for
-                            -- "/usr/share/awesome/lib",
-                            -- "~/.config/awesome",
-                            -- "/usr/share/lua/5.3/lain",
+                            "/usr/share/awesome/lib",
+                            "~/.config/awesome",
+                            "/usr/share/lua/5.3/lain",
                         },
                     },
                     runtime = { version = "LuaJIT" },
                 },
             },
             clangd = {},
+            cssls = {},
+            html = {},
+            ruff = {},
+            ts_ls = {},
+            pyright = {},
+            yamlls = {},
+            jsonls = {},
+            jdtls = {},
+            bashls = {},
+            rust_analyzer = {},
         }
 
         -- Setup neovim lua configuration
