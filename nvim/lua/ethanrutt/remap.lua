@@ -68,3 +68,62 @@ vim.keymap.set("n", "<C-b>", "<C-b>zz")
 -- forward and backwards in jump list
 vim.keymap.set("n", "<C-o>", "<C-o>zz")
 vim.keymap.set("n", "<C-i>", "<C-i>zz")
+
+-------------------------------------------------------------------------------
+-- Telescope
+-------------------------------------------------------------------------------
+vim.keymap.set('n', '<leader><space>',
+  function()
+    require("telescope.builtin").buffers(require('telescope.themes').get_dropdown())
+  end,
+  { desc = '[ ] Find existing buffers' }
+)
+
+vim.keymap.set('n', '<leader>/',
+  function()
+    require("telescope.builtin").current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())
+  end,
+  { desc = '[/] Fuzzily search in current buffer' }
+)
+
+vim.keymap.set('n', '<leader>gf',
+  function()
+    require("telescope.builtin").git_files()
+  end,
+  { desc = 'Search [G]it [F]iles' }
+)
+
+vim.keymap.set('n', '<leader>sf',
+  function()
+    require("telescope.builtin").find_files(require("telescope.themes").get_ivy())
+  end,
+  { desc = '[S]earch [F]iles' }
+)
+
+vim.keymap.set('n', '<leader>sh',
+  function()
+    require("telescope.builtin").help_tags()
+  end,
+  { desc = '[S]earch [H]elp' }
+)
+
+vim.keymap.set('n', '<leader>sg',
+  function()
+    require("telescope.builtin").live_grep()
+  end,
+  { desc = '[S]earch by [G]rep' }
+)
+
+vim.keymap.set('n', '<leader>sd',
+  function()
+    require("telescope.builtin").diagnostics(require('telescope.themes').get_ivy())
+  end,
+  { desc = '[S]earch [D]iagnostics' }
+)
+
+vim.keymap.set('n', '<leader>sr',
+  function()
+    require("telescope.builtin").resume()
+  end,
+  { desc = '[S]earch [R]esume' }
+)
