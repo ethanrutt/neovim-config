@@ -1,33 +1,35 @@
 return function()
     require("nvim-treesitter.configs").setup({
         ensure_installed = {
-            "c",
-            "cpp",
-            "c_sharp",
             "lua",
-            "bash",
-            "markdown",
-            "json",
-            "html",
-            "javascript",
-            "css",
-            "python",
-            "java",
-            "rust",
-            "yaml",
-            "doxygen",
+            "luadoc",
+            "vim",
+            "vimdoc",
+            "printf",
             "git_config",
             "git_rebase",
             "diff",
             "gitattributes",
             "gitcommit",
             "gitignore",
-            "dockerfile",
-            "kotlin",
+            "markdown",
+            "json",
+            "html",
+            "css",
+            "yaml",
             "regex",
+            "c",
+            "cpp",
+            "c_sharp",
+            "rust",
+            "bash",
+            "java",
+            "javascript",
+            "python",
+            "kotlin",
             "sql",
-            "vimdoc",
-            "vim",
+            "doxygen",
+            "dockerfile",
         },
 
         auto_install = false,
@@ -36,6 +38,9 @@ return function()
 
         highlight = { enable = true },
         indent = { enable = true },
+
+        -- requires nvim-treesitter-textobjects
+        -- dependency specified in dependencies of treesitter
         textobjects = {
             move = {
                 enable = true,

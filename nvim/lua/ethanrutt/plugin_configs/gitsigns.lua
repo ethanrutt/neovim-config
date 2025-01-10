@@ -17,33 +17,35 @@ return {
 
         -- Navigation
         map({ "n", "v" }, "]c", function()
-          if vim.wo.diff then
-            return "]c"
-          end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return "<Ignore>"
+            if vim.wo.diff then
+                return "]c"
+            end
+            vim.schedule(function()
+                gs.next_hunk()
+            end)
+            return "<Ignore>"
         end, { expr = true, desc = "Jump to next hunk" })
 
         map({ "n", "v" }, "[c", function()
-          if vim.wo.diff then
-            return "[c"
-          end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return "<Ignore>"
+            if vim.wo.diff then
+                return "[c"
+            end
+            vim.schedule(function()
+                gs.prev_hunk()
+            end)
+            return "<Ignore>"
         end, { expr = true, desc = "Jump to previous hunk" })
 
         -- Actions
         -- normal mode
         map("n", "<leader>hb", function()
-          gs.blame_line { full = false }
+            gs.blame_line { full = false }
         end, { desc = "git blame line" })
+
         map("n", "<leader>hd", gs.diffthis, { desc = "git diff against index" })
+
         map("n", "<leader>hD", function()
-          gs.diffthis "~"
+            gs.diffthis "~"
         end, { desc = "git diff against last commit" })
 
         -- Toggles

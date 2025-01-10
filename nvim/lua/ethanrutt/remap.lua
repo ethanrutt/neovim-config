@@ -1,32 +1,33 @@
 vim.g.mapleader = " "
 
+local map = vim.keymap.set
+
 --
 -- Keymaps for better default experience
 --
--- See `:help vim.keymap.set()`
-vim.keymap.set({ "n", "v", }, "<Space>", "<Nop>", { silent = true })
+map({ "n", "v", }, "<Space>", "<Nop>", { silent = true })
 
 -- Move lines up and down while highlighting them with J and K
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
 
 -- When squashing lines, keep cursor at beginning
-vim.keymap.set("n", "J", "mzJ`z")
+map("n", "J", "mzJ`z")
 
 -- Disable Q
-vim.keymap.set("n", "Q", "<nop>")
+map("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<leader>sx", vim.cmd.Ex, { desc = "[S]earch with :E[x] (netrw)" })
+map("n", "<leader>sx", vim.cmd.Ex, { desc = "[S]earch with :E[x] (netrw)" })
 
 -- while highlighting and pasting, don't yank into register
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[p]aste without yanking"})
+map("x", "<leader>p", [["_dP]], { desc = "[p]aste without yanking"})
 
 -- yank into system clipboard
-vim.keymap.set({ "n", "v", }, "<leader>y", [["+y]], { desc = "[y]ank into system clipboard"})
-vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank into system clipboard"})
+map({ "n", "v", }, "<leader>y", [["+y]], { desc = "[y]ank into system clipboard"})
+map("n", "<leader>Y", [["+Y]], { desc = "[Y]ank into system clipboard"})
 
 -- delete into void register
-vim.keymap.set({ "n", "v", }, "<leader>d", [["_d]], { desc = "[d]elete into void register"})
+map({ "n", "v", }, "<leader>d", [["_d]], { desc = "[d]elete into void register"})
 
 -- don't cancel me, I have this for 3 reasons
 -- 1. when going into visual block mode, then insert mode, if you C-c, the
@@ -34,73 +35,73 @@ vim.keymap.set({ "n", "v", }, "<leader>d", [["_d]], { desc = "[d]elete into void
 -- 2. when hitting C-c in normal mode, in the cmd line it tells you to use :qa!
 --    to exit vim every single time, which is annoying
 -- 3. nvim guru ThePrimeagen has it :P
-vim.keymap.set({ "n", "v", "s", "x", "i", }, "<C-c>", "<Esc>")
+map({ "n", "v", "s", "x", "i", }, "<C-c>", "<Esc>")
 
 --
 -- Quickfix List
 --
-vim.keymap.set("n", "<Space>co", vim.cmd.copen, { desc = "Open quickfix list window"})
-vim.keymap.set("n", "<Space>cl", vim.cmd.ccl, { desc = "Close quickfix list window"})
-vim.keymap.set("n", "<Space>cn", "<cmd>cnext<CR>zz", { desc = "Go to next item"})
-vim.keymap.set("n", "<Space>cp", "<cmd>cprev<CR>zz", { desc = "Go to previous item"})
+map("n", "<Space>co", vim.cmd.copen, { desc = "Open quickfix list window"})
+map("n", "<Space>cl", vim.cmd.ccl, { desc = "Close quickfix list window"})
+map("n", "<Space>cn", "<cmd>cnext<CR>zz", { desc = "Go to next item"})
+map("n", "<Space>cp", "<cmd>cprev<CR>zz", { desc = "Go to previous item"})
 
 --
 -- Diagnostic keymaps
 --
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 --
 -- Keep cursor in the middle when jumping
 --
 -- forward and backwards search
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
 -- half page and full page jumping
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-f>", "<C-f>zz")
-vim.keymap.set("n", "<C-b>", "<C-b>zz")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-f>", "<C-f>zz")
+map("n", "<C-b>", "<C-b>zz")
 
 -- forward and backwards in jump list
-vim.keymap.set("n", "<C-o>", "<C-o>zz")
-vim.keymap.set("n", "<C-i>", "<C-i>zz")
+map("n", "<C-o>", "<C-o>zz")
+map("n", "<C-i>", "<C-i>zz")
 
 --
 -- Telescope
 --
-vim.keymap.set("n", "<leader><space>", function()
+map("n", "<leader><space>", function()
     require("telescope.builtin").buffers(require("telescope.themes").get_dropdown())
 end, { desc = "[ ] Find existing buffers" })
 
-vim.keymap.set("n", "<leader>/", function()
+map("n", "<leader>/", function()
     require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown())
 end, { desc = "[/] Fuzzily search in current buffer" })
 
-vim.keymap.set("n", "<leader>gf", function()
+map("n", "<leader>gf", function()
     require("telescope.builtin").git_files()
 end, { desc = "Search [G]it [F]iles" })
 
-vim.keymap.set("n", "<leader>sf", function()
+map("n", "<leader>sf", function()
     require("telescope.builtin").find_files(require("telescope.themes").get_ivy())
 end, { desc = "[S]earch [F]iles" })
 
-vim.keymap.set("n", "<leader>sh", function()
+map("n", "<leader>sh", function()
     require("telescope.builtin").help_tags()
 end, { desc = "[S]earch [H]elp" })
 
-vim.keymap.set("n", "<leader>sg", function()
+map("n", "<leader>sg", function()
     require("telescope.builtin").live_grep()
 end, { desc = "[S]earch by [G]rep" })
 
-vim.keymap.set("n", "<leader>sd", function()
+map("n", "<leader>sd", function()
     require("telescope.builtin").diagnostics(require("telescope.themes").get_ivy())
 end, { desc = "[S]earch [D]iagnostics" })
 
-vim.keymap.set("n", "<leader>sr", function()
+map("n", "<leader>sr", function()
     require("telescope.builtin").resume()
 end, { desc = "[S]earch [R]esume" })
 
