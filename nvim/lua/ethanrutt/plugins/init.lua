@@ -14,20 +14,61 @@ return {
 
     {
         "lukas-reineke/indent-blankline.nvim",
+        event = "BufRead",
         main = "ibl",
         opts = {},
     },
 
     {
         "numToStr/Comment.nvim",
+        event = "BufRead",
         opts = {},
     },
 
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
-        opts = {},
+        config = true,
     },
+
+    {
+        "windwp/nvim-ts-autotag",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-ts-autotag").setup({
+                opts = {
+                    enable_close = true, -- Auto close tags
+                    enable_rename = true, -- Auto rename pairs of tags
+                    enable_close_on_slash = false -- Auto close on trailing </
+                },
+                -- check docs for if we need to add autotag for different
+                -- filetypes i.e. js for react jsx or other things
+            })
+        end,
+    },
+
+    {
+        "tpope/vim-fugitive",
+        config = function()
+            vim.keymap.set("n", "<leader>gv", "<cmd>Gvdiffsplit!<CR>", { desc = "[V]ertical diff split" })
+            vim.keymap.set("n", "<leader>gh", "<cmd>diffget //2<CR>", { desc = "Diffget left change into conflict" })
+            vim.keymap.set("n", "<leader>gl", "<cmd>diffget //3<CR>", { desc = "Diffget right change into conflict" })
+        end,
+    },
+
+    {
+        "folke/which-key.nvim",
+        config = function()
+            require("ethanrutt.plugin_configs.whichkey")()
+        end,
+    },
+
+    {
+        "lewis6991/gitsigns.nvim",
+        event = "BufRead",
+        opts = require("ethanrutt.plugin_configs.gitsigns"),
+    },
+
 
     --
     -- Treesitter
@@ -40,29 +81,33 @@ return {
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
-        config = require("ethanrutt.plugin_configs.treesitter"),
+        config = function()
+            require("ethanrutt.plugin_configs.treesitter")()
+        end,
     },
+
 
     --
     -- Telescope
     --
     {
         "nvim-telescope/telescope.nvim",
-        lazy = false,
+        lazy = true,
+        cmd = "Telescope",
         branch = "0.1.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
             {
                 -- allow fzf syntax
-                'nvim-telescope/telescope-fzf-native.nvim',
-                build = 'make',
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
                 cond = function()
-                    return vim.fn.executable 'make' == 1
+                    return vim.fn.executable "make" == 1
                 end,
             },
         },
         config = function()
-            pcall(require('telescope').load_extension, 'fzf')
+            pcall(require("telescope").load_extension, "fzf")
         end
     },
 
@@ -92,3 +137,4 @@ return {
         },
     },
 }
+
