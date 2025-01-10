@@ -2,26 +2,28 @@ return {
     --
     -- Util
     --
+    -- -- Uncomment then restart nvim and run :StartupTime to test.
+    -- "dstein64/vim-startuptime",
     {
         "tpope/vim-sleuth",
-        event = "BufRead",
+        event = { "BufRead", "BufNewFile" },
     },
 
     {
         "ntpeters/vim-better-whitespace",
-        event = "BufRead",
+        event = { "BufRead", "BufNewFile" },
     },
 
     {
         "lukas-reineke/indent-blankline.nvim",
-        event = "BufRead",
+        event = { "BufRead", "BufNewFile" },
         main = "ibl",
         opts = {},
     },
 
     {
         "numToStr/Comment.nvim",
-        event = "BufRead",
+        event = { "BufRead", "BufNewFile" },
         opts = {},
     },
 

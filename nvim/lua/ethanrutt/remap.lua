@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 -- Keymaps for better default experience
 --
 -- See `:help vim.keymap.set()`
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+vim.keymap.set({ "n", "v", }, "<Space>", "<Nop>", { silent = true })
 
 -- Move lines up and down while highlighting them with J and K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -22,11 +22,11 @@ vim.keymap.set("n", "<leader>sx", vim.cmd.Ex, { desc = "[S]earch with :E[x] (net
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "[p]aste without yanking"})
 
 -- yank into system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "[y]ank into system clipboard"})
+vim.keymap.set({ "n", "v", }, "<leader>y", [["+y]], { desc = "[y]ank into system clipboard"})
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank into system clipboard"})
 
 -- delete into void register
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], { desc = "[d]elete into void register"})
+vim.keymap.set({ "n", "v", }, "<leader>d", [["_d]], { desc = "[d]elete into void register"})
 
 -- don't cancel me, I have this for 3 reasons
 -- 1. when going into visual block mode, then insert mode, if you C-c, the
@@ -34,7 +34,7 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], { desc = "[d]elete into void re
 -- 2. when hitting C-c in normal mode, in the cmd line it tells you to use :qa!
 --    to exit vim every single time, which is annoying
 -- 3. nvim guru ThePrimeagen has it :P
-vim.keymap.set({"n", "v"}, "<C-c>", "<Esc>")
+vim.keymap.set({ "n", "v", "s", "x", "i", }, "<C-c>", "<Esc>")
 
 --
 -- Quickfix List
@@ -72,59 +72,35 @@ vim.keymap.set("n", "<C-i>", "<C-i>zz")
 --
 -- Telescope
 --
-vim.keymap.set("n", "<leader><space>",
-  function()
+vim.keymap.set("n", "<leader><space>", function()
     require("telescope.builtin").buffers(require("telescope.themes").get_dropdown())
-  end,
-  { desc = "[ ] Find existing buffers" }
-)
+end, { desc = "[ ] Find existing buffers" })
 
-vim.keymap.set("n", "<leader>/",
-  function()
+vim.keymap.set("n", "<leader>/", function()
     require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown())
-  end,
-  { desc = "[/] Fuzzily search in current buffer" }
-)
+end, { desc = "[/] Fuzzily search in current buffer" })
 
-vim.keymap.set("n", "<leader>gf",
-  function()
+vim.keymap.set("n", "<leader>gf", function()
     require("telescope.builtin").git_files()
-  end,
-  { desc = "Search [G]it [F]iles" }
-)
+end, { desc = "Search [G]it [F]iles" })
 
-vim.keymap.set("n", "<leader>sf",
-  function()
+vim.keymap.set("n", "<leader>sf", function()
     require("telescope.builtin").find_files(require("telescope.themes").get_ivy())
-  end,
-  { desc = "[S]earch [F]iles" }
-)
+end, { desc = "[S]earch [F]iles" })
 
-vim.keymap.set("n", "<leader>sh",
-  function()
+vim.keymap.set("n", "<leader>sh", function()
     require("telescope.builtin").help_tags()
-  end,
-  { desc = "[S]earch [H]elp" }
-)
+end, { desc = "[S]earch [H]elp" })
 
-vim.keymap.set("n", "<leader>sg",
-  function()
+vim.keymap.set("n", "<leader>sg", function()
     require("telescope.builtin").live_grep()
-  end,
-  { desc = "[S]earch by [G]rep" }
-)
+end, { desc = "[S]earch by [G]rep" })
 
-vim.keymap.set("n", "<leader>sd",
-  function()
+vim.keymap.set("n", "<leader>sd", function()
     require("telescope.builtin").diagnostics(require("telescope.themes").get_ivy())
-  end,
-  { desc = "[S]earch [D]iagnostics" }
-)
+end, { desc = "[S]earch [D]iagnostics" })
 
-vim.keymap.set("n", "<leader>sr",
-  function()
+vim.keymap.set("n", "<leader>sr", function()
     require("telescope.builtin").resume()
-  end,
-  { desc = "[S]earch [R]esume" }
-)
+end, { desc = "[S]earch [R]esume" })
 
