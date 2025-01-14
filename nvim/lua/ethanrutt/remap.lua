@@ -17,8 +17,6 @@ map("n", "J", "mzJ`z")
 -- Disable Q
 map("n", "Q", "<nop>")
 
-map("n", "<leader>sx", vim.cmd.Ex, { desc = "[S]earch with :E[x] (netrw)" })
-
 -- while highlighting and pasting, don't yank into register
 map("x", "<leader>p", [["_dP]], { desc = "[p]aste without yanking"})
 
