@@ -5,7 +5,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     if vim.v.shell_error ~= 0 then
         vim.api.nvim_echo({
             { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-            { out, "WarningMsg" },
+            { out,                            "WarningMsg" },
             { "\nPress any key to exit..." },
         }, true, {})
         vim.fn.getchar()
@@ -39,13 +39,18 @@ require("lazy").setup({
             },
         },
     },
+    {
+        "nvim-tree/nvim-web-devicons",
+        lazy = false,
+        opts = {},
+    },
 
 
     --
     -- Util
     --
-    -- -- Uncomment then restart nvim and run :StartupTime to test.
-    -- "dstein64/vim-startuptime",
+    -- Uncomment then restart nvim and run :StartupTime to test.
+    "dstein64/vim-startuptime",
     {
         "tpope/vim-sleuth",
         event = { "BufRead", "BufNewFile" },
@@ -81,8 +86,8 @@ require("lazy").setup({
         config = function()
             require("nvim-ts-autotag").setup({
                 opts = {
-                    enable_close = true, -- Auto close tags
-                    enable_rename = true, -- Auto rename pairs of tags
+                    enable_close = true,          -- Auto close tags
+                    enable_rename = true,         -- Auto rename pairs of tags
                     enable_close_on_slash = false -- Auto close on trailing </
                 },
                 -- check docs for if we need to add autotag for different
@@ -92,19 +97,8 @@ require("lazy").setup({
     },
 
     {
-        "tpope/vim-fugitive",
-        config = function()
-            vim.keymap.set("n", "<leader>gv", "<cmd>Gvdiffsplit!<CR>", { desc = "[V]ertical diff split" })
-            vim.keymap.set("n", "<leader>gh", "<cmd>diffget //2<CR>", { desc = "Diffget left change into conflict" })
-            vim.keymap.set("n", "<leader>gl", "<cmd>diffget //3<CR>", { desc = "Diffget right change into conflict" })
-        end,
-    },
-
-    {
         "folke/which-key.nvim",
-        config = function()
-            require("ethanrutt.plugin_configs.whichkey")()
-        end,
+        config = require("ethanrutt.plugin_configs.whichkey"),
     },
 
     {
@@ -125,9 +119,7 @@ require("lazy").setup({
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
-        config = function()
-            require("ethanrutt.plugin_configs.treesitter")()
-        end,
+        config = require("ethanrutt.plugin_configs.treesitter"),
     },
 
 
@@ -154,5 +146,44 @@ require("lazy").setup({
             pcall(require("telescope").load_extension, "fzf")
         end
     },
-})
 
+
+    --
+    -- LSP
+    --
+    {
+        "neovim/nvim-lspconfig",
+        lazy = false,
+        dependencies = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            {
+                "folke/lazydev.nvim",
+                ft = "lua",
+                opts = {},
+            },
+            {
+                "j-hui/fidget.nvim",
+                opts = {},
+            },
+        },
+        config = require("ethanrutt.plugin_configs.lsp"),
+    },
+
+
+    --
+    -- CMP
+    --
+    {
+        "hrsh7th/nvim-cmp",
+        lazy = false,
+        dependencies = {
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-path",
+        },
+        config = require("ethanrutt.plugin_configs.cmp"),
+    }
+
+})

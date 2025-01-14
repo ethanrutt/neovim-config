@@ -38,19 +38,31 @@ return {
 
         -- Actions
         -- normal mode
+        map("n", "<leader>hs", gs.stage_hunk, { desc = "[S]tage [H]unk" })
+        map("n", "<leader>hr", gs.reset_hunk, { desc = "[R]eset [H]unk" })
+        map("v", "<leader>hs", function()
+            gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, { desc = "[S]tage [H]unk" })
+
+        map("v", "<leader>hr", function()
+            gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") }
+        end, { desc = "[R]eset [H]unk" })
+
+        map("n", "<leader>hS", gs.stage_buffer, { desc = "[S]tage Buffer" })
+        map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "[U]nstage [H]unk (git restore --staged)" })
+        map("n", "<leader>hR", gs.reset_buffer, { desc = "[R]eset Buffer (git reset)" })
+        map("n", "<leader>hp", gs.preview_hunk, { desc = "[P]review [H]unk" })
         map("n", "<leader>hb", function()
-            gs.blame_line { full = false }
-        end, { desc = "git blame line" })
-
-        map("n", "<leader>hd", gs.diffthis, { desc = "git diff against index" })
-
+            gs.blame_line({ full = true })
+        end, { desc = "[B]lame current line (git blame)" })
+        map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "[T]oggle [B]lame on line that cursor is on" })
+        map("n", "<leader>hd", gs.diffthis, { desc = "[D]iff against current index" })
         map("n", "<leader>hD", function()
-            gs.diffthis "~"
-        end, { desc = "git diff against last commit" })
+            gs.diffthis("~")
+        end, { desc = "[D]iff against previous commit" })
+        map("n", "<leader>td", gs.toggle_deleted, { desc = "[T]oggle [D]eleted lines"})
 
-        -- Toggles
-        map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "toggle git blame line" })
-        map("n", "<leader>td", gs.toggle_deleted, { desc = "toggle git show deleted" })
+        -- Hunks as text objects
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
     end,
 }
-
