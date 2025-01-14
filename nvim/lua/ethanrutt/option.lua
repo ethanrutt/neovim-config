@@ -1,56 +1,33 @@
--- Trim whitespace on save
+local o = vim.o
+local opt = vim.opt
+
 vim.cmd([[autocmd BufWritePre * :StripWhitespace]])
-
--- Set highlight on search
-vim.o.hlsearch = false
-
--- Make line numbers default
 vim.wo.number = true
+vim.wo.signcolumn = "yes"
 
--- Enable mouse mode
-vim.o.mouse = 'a'
+o.hlsearch = false
+o.mouse = "a"
+o.breakindent = true
+o.undofile = true
+o.ignorecase = true
+o.smartcase = true
+o.updatetime = 250
+o.timeoutlen = 300
+o.completeopt = "menuone,noselect"
+o.termguicolors = true
 
--- Enable break indent
-vim.o.breakindent = true
+opt.tabstop = 4
+opt.shiftwidth = 0
+opt.expandtab = true
+opt.colorcolumn = "80"
 
--- Save undo history
-vim.o.undofile = true
-
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
-
--- 4 spaces instead of tab character
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 0
-vim.opt.expandtab = true
-
--- colorcolumn at 80 chars
-vim.opt.colorcolumn = "80"
-
--------------------------------------------------------------------------------
--- [[ Highlight on yank ]]
--------------------------------------------------------------------------------
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = "*",
 })
 
