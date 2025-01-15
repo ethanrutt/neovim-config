@@ -2,6 +2,7 @@ local o = vim.o
 local opt = vim.opt
 
 vim.cmd([[autocmd BufWritePre * :StripWhitespace]])
+
 vim.wo.number = true
 vim.wo.signcolumn = "yes"
 
@@ -21,7 +22,6 @@ opt.shiftwidth = 0
 opt.expandtab = true
 opt.colorcolumn = "80"
 
--- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
@@ -30,4 +30,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     group = highlight_group,
     pattern = "*",
 })
-

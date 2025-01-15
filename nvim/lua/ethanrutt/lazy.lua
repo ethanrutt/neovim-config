@@ -39,6 +39,7 @@ require("lazy").setup({
             },
         },
     },
+
     {
         "nvim-tree/nvim-web-devicons",
         lazy = false,
@@ -49,8 +50,8 @@ require("lazy").setup({
     --
     -- Util
     --
-    -- Uncomment then restart nvim and run :StartupTime to test.
-    "dstein64/vim-startuptime",
+    -- -- Uncomment then restart nvim and run :StartupTime to test.
+    -- "dstein64/vim-startuptime",
     {
         "tpope/vim-sleuth",
         event = { "BufRead", "BufNewFile" },
@@ -144,7 +145,7 @@ require("lazy").setup({
         },
         config = function()
             pcall(require("telescope").load_extension, "fzf")
-        end
+        end,
     },
 
 
@@ -184,6 +185,5 @@ require("lazy").setup({
             "hrsh7th/cmp-path",
         },
         config = require("ethanrutt.plugin_configs.cmp"),
-    }
-
+    },
 })

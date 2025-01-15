@@ -15,7 +15,10 @@ return {
             vim.keymap.set(mode, l, r, opts)
         end
 
+
+        --
         -- Navigation
+        --
         map({ "n", "v" }, "]c", function()
             if vim.wo.diff then
                 return "]c"
@@ -36,8 +39,10 @@ return {
             return "<Ignore>"
         end, { expr = true, desc = "Jump to previous hunk" })
 
+
+        --
         -- Actions
-        -- normal mode
+        --
         map("n", "<leader>hs", gs.stage_hunk, { desc = "[S]tage [H]unk" })
         map("n", "<leader>hr", gs.reset_hunk, { desc = "[R]eset [H]unk" })
         map("v", "<leader>hs", function()
@@ -60,9 +65,12 @@ return {
         map("n", "<leader>hD", function()
             gs.diffthis("~")
         end, { desc = "[D]iff against previous commit" })
-        map("n", "<leader>td", gs.toggle_deleted, { desc = "[T]oggle [D]eleted lines"})
+        map("n", "<leader>td", gs.toggle_deleted, { desc = "[T]oggle [D]eleted lines" })
 
+
+        --
         -- Hunks as text objects
+        --
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
     end,
 }

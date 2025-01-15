@@ -1,5 +1,6 @@
 return function()
     require("nvim-treesitter.configs").setup({
+        -- add more parsers here as needed
         ensure_installed = {
             "lua",
             "luadoc",
@@ -32,13 +33,29 @@ return function()
             "dockerfile",
         },
 
+
+        --
+        -- Stuff to suppress warnings
+        --
         auto_install = false,
-
         sync_install = false,
+        ignore_install = {},
+        modules = {},
 
-        highlight = { enable = true },
+
+        --
+        -- Modules
+        --
+        highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false,
+        },
         indent = { enable = true },
 
+
+        --
+        -- Text Objects
+        --
         -- requires nvim-treesitter-textobjects
         -- dependency specified in dependencies of treesitter
         textobjects = {
@@ -67,4 +84,3 @@ return function()
         },
     })
 end
-
