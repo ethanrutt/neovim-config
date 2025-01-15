@@ -69,6 +69,13 @@ map("n", "<C-o>", "<C-o>zz")
 map("n", "<C-i>", "<C-i>zz")
 
 --
+-- nvimdiff
+--
+map("n", "<leader>gh", "<cmd>diffget LOCAL<CR><cmd>diffupdate<CR>", { desc = "diffget LOCAL change into working file" })
+map("n", "<leader>gl", "<cmd>diffget REMOTE<CR><cmd>diffupdate<CR>", { desc = "diffget REMOTE change into working file" })
+map("n", "<leader>gk", "<cmd>diffget BASE<CR><cmd>diffupdate<CR>", { desc = "diffget BASE change into working file" })
+
+--
 -- Telescope
 --
 map("n", "<leader><space>", function()
