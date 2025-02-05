@@ -6,6 +6,8 @@ vim.cmd([[autocmd BufWritePre * :StripWhitespace]])
 vim.wo.number = true
 vim.wo.signcolumn = "yes"
 
+vim.g.netrw_banner = 0
+
 o.hlsearch = false
 o.mouse = "a"
 o.breakindent = true
