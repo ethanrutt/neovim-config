@@ -1,6 +1,6 @@
 return function()
     require("which-key").add({
-        { "<leader>c",  group = "[C]ode / Quickfix" },
+        { "<leader>c",  group = "Quickfix" },
         { "<leader>c_", hidden = true },
         { "<leader>d",  group = "[D]ocument / delete to void register" },
         { "<leader>d_", hidden = true },

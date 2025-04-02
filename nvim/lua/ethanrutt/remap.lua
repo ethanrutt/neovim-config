@@ -71,6 +71,7 @@ map("n", "<C-b>", "<C-b>zz")
 map("n", "<C-o>", "<C-o>zz")
 map("n", "<C-i>", "<C-i>zz")
 
+
 --
 -- nvimdiff
 --
