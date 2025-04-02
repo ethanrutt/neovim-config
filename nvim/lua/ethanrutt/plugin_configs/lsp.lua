@@ -48,6 +48,7 @@ return function()
 
     -- add more servers when needed
     local servers = {
+        bashls = {},
         lua_ls = {
             Lua = {
                 workspace = {
@@ -65,15 +66,12 @@ return function()
         clangd = {},
         cssls = {},
         html = {},
-        ruff = {},
         ts_ls = {},
+        ruff = {},
         pyright = {},
         yamlls = {},
         jsonls = {},
-        jdtls = {},
-        bashls = {},
         rust_analyzer = {},
-        ansiblels = {},
     }
 
     require("lazydev").setup()
