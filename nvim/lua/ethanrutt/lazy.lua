@@ -176,14 +176,12 @@ require("lazy").setup({
     -- CMP
     --
     {
-        "hrsh7th/nvim-cmp",
-        lazy = false,
-        dependencies = {
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-path",
+        "saghen/blink.cmp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        version = "1.*",
+        opts = {
+            keymap = { preset = "enter" },
         },
-        config = require("ethanrutt.plugin_configs.cmp"),
-    },
+        opts_extend = { "sources.default" }
+    }
 })
