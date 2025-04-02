@@ -10,13 +10,6 @@ return function()
 
 
         --
-        -- Typical LSP Functionality
-        --
-        nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-        nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
-
-        --
         -- Telescope Integration
         --
         nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
@@ -32,7 +25,7 @@ return function()
         -- Documentation Help
         --
         nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-        nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+        nmap("<C-s>", vim.lsp.buf.signature_help, "Signature Documentation")
 
 
         --
