@@ -41,15 +41,15 @@ map({ "n", "v", "s", "x", "i", }, "<C-c>", "<Esc>")
 --
 map("n", "<Space>co", vim.cmd.copen, { desc = "Open quickfix list window" })
 map("n", "<Space>cl", vim.cmd.ccl, { desc = "Close quickfix list window" })
-map("n", "<Space>cn", "<cmd>cnext<CR>zz", { desc = "Go to next item" })
-map("n", "<Space>cp", "<cmd>cprev<CR>zz", { desc = "Go to previous item" })
 
 
 --
--- Diagnostic keymaps
+-- Diagnostic List
 --
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+map("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end,
+    { desc = "Go to previous diagnostic message" })
+map("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end,
+    { desc = "Go to next diagnostic message" })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
