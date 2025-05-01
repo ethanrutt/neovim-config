@@ -8,16 +8,15 @@ not get in your way and have everything at your fingertips.
 - Telescope
 - Treesitter
 - Mason
-- cmp-nvim
+- blink.cmp
 
 ## Theming
 - catppuccin mocha
 - lualine
 
 ## Util
-- Comment
 - autopairs and autotag
-- vim-better-whitespace
+- whitespace
 - which-key
 
 ## Images
