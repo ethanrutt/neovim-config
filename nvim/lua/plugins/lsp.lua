@@ -48,13 +48,14 @@ return {
                 vim.lsp.enable(server)
             end
 
-            vim.keymap.set("n", "<leader>f", vim.lsp.buf.format,
+            local map = vim.keymap.set
+            map("n", "<leader>f", vim.lsp.buf.format,
                 { desc = "[F]ormat current buffer" })
-            vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder,
+            map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder,
                 { desc = "[W]orkspace [A]dd Folder" })
-            vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder,
+            map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder,
                 { desc = "[W]orkspace [R]emove Folder" })
-            vim.keymap.set("n", "<leader>wl", function()
+            map("n", "<leader>wl", function()
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end, { desc = "[W]orkspace [L]ist Folders" })
         end
