@@ -32,6 +32,8 @@ return {
                 "rust",
                 "bash",
                 "javascript",
+                "typescript",
+                "tsx",
                 "python",
                 "sql",
                 "doxygen",
