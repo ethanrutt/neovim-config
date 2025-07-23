@@ -77,3 +77,19 @@ map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list
 map("n", "<leader>gh", "<cmd>diffget LOCAL<CR><cmd>diffupdate<CR>", { desc = "diffget LOCAL change into working file" })
 map("n", "<leader>gl", "<cmd>diffget REMOTE<CR><cmd>diffupdate<CR>", { desc = "diffget REMOTE change into working file" })
 map("n", "<leader>gk", "<cmd>diffget BASE<CR><cmd>diffupdate<CR>", { desc = "diffget BASE change into working file" })
+
+
+---
+--- virtual lines
+---
+map("n", "<leader>dv", function()
+    local current_config = vim.diagnostic.config()
+    local new_virtual_lines = not current_config.virtual_lines
+    vim.diagnostic.config({ virtual_lines = new_virtual_lines })
+    if new_virtual_lines then
+        vim.notify("Diagnostic virtual lines enabled", vim.log.levels.INFO, { title = "Diagnostics" })
+    else
+        vim.notify("Diagnostic virtual lines disabled", vim.log.levels.WARN, { title = "Diagnostics" })
+
+    end
+end, { noremap = true, desc = "[d]iagnostic [v]irtual lines toggle"})

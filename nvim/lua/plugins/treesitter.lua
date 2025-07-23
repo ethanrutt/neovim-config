@@ -34,6 +34,7 @@ return {
                 "javascript",
                 "typescript",
                 "tsx",
+                "ruby",
                 "python",
                 "sql",
                 "doxygen",

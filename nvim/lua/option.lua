@@ -14,3 +14,8 @@ o.signcolumn = "yes"
 o.shiftwidth = 0
 o.tabstop = 4
 o.expandtab = true
+
+vim.diagnostic.config({
+    virtual_text = false,
+    virtual_lines = false,
+})
