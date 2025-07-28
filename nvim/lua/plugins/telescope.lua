@@ -44,7 +44,7 @@ return {
         local builtin = require("telescope.builtin")
         local map = vim.keymap.set
         map("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles via Telescope" })
-        map("n", "<leader>gf", builtin.git_files, { desc = "Search [G]it [F]iles via Telescope" })
+        map("n", "<leader>ff", builtin.git_files, { desc = "[F]ind Git [F]iles via Telescope" })
         map("n", "<leader>gc", builtin.git_commits, { desc = "Search [G]it [C]ommits via Telescope" })
         map("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch with [G]rep via Telescope" })
         map("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps via Telescope" })

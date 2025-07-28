@@ -21,4 +21,4 @@ not get in your way and have everything at your fingertips.
 ## Images
 ![editor_windows](img/editor_windows.png)
 ![auto complete](img/autocomplete.png)
-![search git files](img/search_files.png)
+![search git files](img/git_files.png)

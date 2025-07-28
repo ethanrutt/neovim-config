@@ -23,12 +23,11 @@ map("n", "<leader>Y", [["+Y]], { desc = "[Y]ank into system clipboard" })
 -- delete into void register
 map({ "n", "v", }, "<leader>d", [["_d]], { desc = "[d]elete into void register" })
 
--- don't cancel me, I have this for 3 reasons
+-- I have this for 2 reasons
 -- 1. when going into visual block mode, then insert mode, if you C-c, the
 --    insert doesn't apply to all lines
 -- 2. when hitting C-c in normal mode, in the cmd line it tells you "use :qa!
 --    to exit vim" every single time, which is annoying
--- 3. nvim guru ThePrimeagen has it :P
 map({ "n", "v", "s", "x", "i", }, "<C-c>", "<Esc>")
 
 
@@ -90,6 +89,5 @@ map("n", "<leader>dv", function()
         vim.notify("Diagnostic virtual lines enabled", vim.log.levels.INFO, { title = "Diagnostics" })
     else
         vim.notify("Diagnostic virtual lines disabled", vim.log.levels.WARN, { title = "Diagnostics" })
-
     end
-end, { noremap = true, desc = "[d]iagnostic [v]irtual lines toggle"})
+end, { noremap = true, desc = "[d]iagnostic [v]irtual lines toggle" })
