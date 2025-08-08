@@ -8,6 +8,29 @@ return {
                 "j-hui/fidget.nvim",
                 opts = {},
             },
+            {
+                "stevearc/conform.nvim",
+                event = { "BufWritePre" },
+                cmd = { "ConformInfo" },
+                keys = {
+                    {
+                        "<leader>F",
+                        function()
+                            require("conform").format({ async = true, lsp_fallback = true })
+                        end,
+                        mode = "",
+                        desc = "Format buffer",
+                    },
+                },
+                opts = {
+                    notify_on_error = true,
+                    log_level = vim.log.levels.INFO,
+                    formatters_by_ft = {
+                        lua = { "stylua" },
+                        --add other filetypes and their formatters here
+                    },
+                },
+            },
         },
         config = function()
             require("mason").setup()
@@ -22,6 +45,7 @@ return {
                     "json-lsp",
                     "lua-language-server",
                     "rust-analyzer",
+                    "stylua",
                     "typescript-language-server",
                     "yaml-language-server",
                 },
@@ -49,8 +73,6 @@ return {
             end
 
             local map = vim.keymap.set
-            map("n", "<leader>f", vim.lsp.buf.format,
-                { desc = "[F]ormat current buffer" })
             map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder,
                 { desc = "[W]orkspace [A]dd Folder" })
             map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder,
