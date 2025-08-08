@@ -91,3 +91,12 @@ map("n", "<leader>dv", function()
         vim.notify("Diagnostic virtual lines disabled", vim.log.levels.WARN, { title = "Diagnostics" })
     end
 end, { noremap = true, desc = "[d]iagnostic [v]irtual lines toggle" })
+
+
+---
+--- toggle sign column and number for highlight + copying purposes
+---
+map("n", "<leader>tn", function()
+    vim.o.number = not vim.o.number
+    vim.o.signcolumn = vim.o.signcolumn == "no" and "yes" or "no"
+end, { noremap = true, desc = "[T]oggle [N]umber (and sign column)" })
