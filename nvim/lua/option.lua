@@ -15,6 +15,7 @@ o.shiftwidth = 0
 o.tabstop = 4
 o.expandtab = true
 o.mouse = ""
+o.timeoutlen = 300
 
 vim.diagnostic.config({
     virtual_text = false,
