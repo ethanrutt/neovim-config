@@ -36,8 +36,9 @@ return {
 		end
 
 		map("n", "<leader>ff", smart_find_files, { desc = "[F]ind [F]iles" })
-		map("n", "<leader>sg", fzf.live_grep, { desc = "[S]earch with [G]rep" })
+		map("n", "<leader>fb", fzf.buffers, { desc = "[F]ind [B]uffers" })
 		map("n", "<leader><space>", fzf.buffers, { desc = "[ ] Search buffers" })
+		map("n", "<leader>sg", fzf.live_grep_native, { desc = "[S]earch with [G]rep" })
 		map("n", "<leader>/", fzf.lgrep_curbuf, { desc = "[/] Fuzzily search current buffer" })
 
 		map("n", "<leader>gd", fzf.lsp_definitions, { desc = "[G]oto [D]efinition" })
