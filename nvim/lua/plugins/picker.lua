@@ -21,6 +21,9 @@ return {
 					syntax_limit_b = 1024 * 100,
 				},
 			},
+			winopts = {
+				backdrop = 100,
+			},
 		})
 
 		local fzf = require("fzf-lua")
