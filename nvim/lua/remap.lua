@@ -3,7 +3,6 @@
 -- with plugins will be in their respective configuration file
 --
 vim.g.mapleader = " "
-
 local map = vim.keymap.set
 
 
@@ -13,15 +12,15 @@ local map = vim.keymap.set
 map({ "n", "v", }, "<Space>", "<Nop>", { silent = true })
 map("n", "Q", "<nop>", { silent = true })
 
--- while highlighting and pasting, don't yank into register
 map("x", "<leader>p", [["_dP]], { desc = "[p]aste without yanking" })
 
--- yank into system clipboard
 map({ "n", "v", }, "<leader>y", [["+y]], { desc = "[y]ank into system clipboard" })
 map("n", "<leader>Y", [["+Y]], { desc = "[Y]ank into system clipboard" })
 
--- delete into void register
 map({ "n", "v", }, "<leader>d", [["_d]], { desc = "[d]elete into void register" })
+
+map("v", "<", "<gv", { desc = "Indent left and reselect" })
+map("v", ">", ">gv", { desc = "Indent right and reselect" })
 
 -- I have this for 2 reasons
 -- 1. when going into visual block mode, then insert mode, if you C-c, the
