@@ -5,19 +5,24 @@
 vim.g.mapleader = " "
 local map = vim.keymap.set
 
-
 --
 -- Miscellaneous
 --
-map({ "n", "v", }, "<Space>", "<Nop>", { silent = true })
+map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 map("n", "Q", "<nop>", { silent = true })
 
 map("x", "<leader>p", [["_dP]], { desc = "[p]aste without yanking" })
 
-map({ "n", "v", }, "<leader>y", [["+y]], { desc = "[y]ank into system clipboard" })
+map({ "n", "v" }, "<leader>y", [["+y]], { desc = "[y]ank into system clipboard" })
 map("n", "<leader>Y", [["+Y]], { desc = "[Y]ank into system clipboard" })
 
-map({ "n", "v", }, "<leader>d", [["_d]], { desc = "[d]elete into void register" })
+map("n", "<leader>pa", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+	print("file:", path)
+end, { desc = "Copy [pa]th to system clipboard" })
+
+map({ "n", "v" }, "<leader>d", [["_d]], { desc = "[d]elete into void register" })
 
 map("v", "<", "<gv", { desc = "Indent left and reselect" })
 map("v", ">", ">gv", { desc = "Indent right and reselect" })
@@ -27,8 +32,7 @@ map("v", ">", ">gv", { desc = "Indent right and reselect" })
 --    insert doesn't apply to all lines
 -- 2. when hitting C-c in normal mode, in the cmd line it tells you "use :qa!
 --    to exit vim" every single time, which is annoying
-map({ "n", "v", "s", "x", "i", }, "<C-c>", "<Esc>")
-
+map({ "n", "v", "s", "x", "i" }, "<C-c>", "<Esc>")
 
 --
 -- keep cursor in middle while jumping
@@ -50,52 +54,54 @@ map("n", "<C-b>", "<C-b>zz")
 map("n", "<C-o>", "<C-o>zz")
 map("n", "<C-i>", "<C-i>zz")
 
-
 --
 -- Quickfix List
 --
 map("n", "<Space>co", vim.cmd.copen, { desc = "Open quickfix list window" })
 map("n", "<Space>cl", vim.cmd.ccl, { desc = "Close quickfix list window" })
 
-
 --
 -- Diagnostic List
 --
-map("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end,
-    { desc = "Go to previous diagnostic message" })
-map("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end,
-    { desc = "Go to next diagnostic message" })
+map("n", "[d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic message" })
+map("n", "]d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic message" })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
-
 
 --
 -- nvimdiff
 --
 map("n", "<leader>gh", "<cmd>diffget LOCAL<CR><cmd>diffupdate<CR>", { desc = "diffget LOCAL change into working file" })
-map("n", "<leader>gl", "<cmd>diffget REMOTE<CR><cmd>diffupdate<CR>", { desc = "diffget REMOTE change into working file" })
+map(
+	"n",
+	"<leader>gl",
+	"<cmd>diffget REMOTE<CR><cmd>diffupdate<CR>",
+	{ desc = "diffget REMOTE change into working file" }
+)
 map("n", "<leader>gk", "<cmd>diffget BASE<CR><cmd>diffupdate<CR>", { desc = "diffget BASE change into working file" })
-
 
 ---
 --- virtual lines
 ---
 map("n", "<leader>dv", function()
-    local current_config = vim.diagnostic.config()
-    local new_virtual_lines = not current_config.virtual_lines
-    vim.diagnostic.config({ virtual_lines = new_virtual_lines })
-    if new_virtual_lines then
-        vim.notify("Diagnostic virtual lines enabled", vim.log.levels.INFO, { title = "Diagnostics" })
-    else
-        vim.notify("Diagnostic virtual lines disabled", vim.log.levels.WARN, { title = "Diagnostics" })
-    end
+	local current_config = vim.diagnostic.config()
+	local new_virtual_lines = not current_config.virtual_lines
+	vim.diagnostic.config({ virtual_lines = new_virtual_lines })
+	if new_virtual_lines then
+		vim.notify("Diagnostic virtual lines enabled", vim.log.levels.INFO, { title = "Diagnostics" })
+	else
+		vim.notify("Diagnostic virtual lines disabled", vim.log.levels.WARN, { title = "Diagnostics" })
+	end
 end, { noremap = true, desc = "[d]iagnostic [v]irtual lines toggle" })
-
 
 ---
 --- toggle sign column and number for highlight + copying purposes
 ---
 map("n", "<leader>tn", function()
-    vim.o.number = not vim.o.number
-    vim.o.signcolumn = vim.o.signcolumn == "no" and "yes" or "no"
+	vim.o.number = not vim.o.number
+	vim.o.signcolumn = vim.o.signcolumn == "no" and "yes" or "no"
 end, { noremap = true, desc = "[T]oggle [N]umber (and sign column)" })
