@@ -5,7 +5,6 @@ return {
 			keymap = {
 				fzf = {
 					true,
-					["ctrl-d"] = "preview-page-down",
 					["ctrl-u"] = "unix-line-discard",
 					["ctrl-q"] = "select-all+accept",
 					["ctrl-f"] = "half-page-down",
