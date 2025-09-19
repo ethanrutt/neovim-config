@@ -1,7 +1,10 @@
 return {
 	"ibhagwan/fzf-lua",
 	config = function()
-		require("fzf-lua").setup({
+		local fzf = require("fzf-lua")
+		local map = vim.keymap.set
+
+		fzf.setup({
 			keymap = {
 				fzf = {
 					true,
@@ -24,9 +27,6 @@ return {
 				backdrop = 100,
 			},
 		})
-
-		local fzf = require("fzf-lua")
-		local map = vim.keymap.set
 
 		local function smart_find_files()
 			local root = vim.fn.systemlist("git rev-parse --show-toplevel")

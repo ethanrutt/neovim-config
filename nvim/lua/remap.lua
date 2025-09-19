@@ -1,4 +1,5 @@
 --
+--
 -- only vim default keybindings will be in this file ; keybinds that have to do
 -- with plugins will be in their respective configuration file
 --
@@ -85,9 +86,9 @@ map(
 map("n", "<leader>gk", "<cmd>diffget BASE<CR><cmd>diffupdate<CR>", { desc = "diffget BASE change into working file" })
 
 ---
---- virtual lines
+--- toggles
 ---
-map("n", "<leader>dv", function()
+map("n", "<leader>tv", function()
 	local current_config = vim.diagnostic.config()
 	local new_virtual_lines = not current_config.virtual_lines
 	vim.diagnostic.config({ virtual_lines = new_virtual_lines })
@@ -98,9 +99,6 @@ map("n", "<leader>dv", function()
 	end
 end, { noremap = true, desc = "[d]iagnostic [v]irtual lines toggle" })
 
----
---- toggle sign column and number for highlight + copying purposes
----
 map("n", "<leader>tn", function()
 	vim.o.number = not vim.o.number
 	vim.o.signcolumn = vim.o.signcolumn == "no" and "yes" or "no"
