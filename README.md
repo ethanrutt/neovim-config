@@ -4,21 +4,24 @@ not get in your way and have everything at your fingertips.
 
 ## Core Plugins
 - Lazy package manager
-- Telescope
+- fzf-lua
 - Treesitter
 - Mason
-- blink.cmp
 
 ## Theming
 - catppuccin mocha
 - lualine
 
 ## Util
-- autopairs and autotag
-- whitespace
-- which-key
+- mini utils
+    - surround
+    - pairs
+    - trailspace
+- autotag
+- gitsigns
+- conform
 
 ## Images
-![editor_windows](img/editor_windows.png)
-![auto complete](img/autocomplete.png)
-![search git files](img/git_files.png)
+![editor](img/editor.png)
+![lazy](img/lazy.png)
+![picker](img/picker.png)
