@@ -1,5 +1,3 @@
---
---
 -- only vim default keybindings will be in this file ; keybinds that have to do
 -- with plugins will be in their respective configuration file
 --

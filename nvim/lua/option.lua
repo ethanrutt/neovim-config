@@ -1,6 +1,5 @@
 local o = vim.o
 
-
 --
 -- basic
 --
@@ -11,9 +10,6 @@ o.wrap = false
 o.scrolloff = 10
 o.sidescrolloff = 8
 o.mouse = ""
-o.updatetime = 300
-o.timeoutlen = 300
-
 
 --
 -- indentation
@@ -26,7 +22,6 @@ o.smartindent = true
 o.autoindent = true
 o.breakindent = true
 
-
 --
 -- search
 --
@@ -35,14 +30,12 @@ o.smartcase = true
 o.hlsearch = false
 o.incsearch = true
 
-
 --
 -- view
 --
 o.termguicolors = true
 o.colorcolumn = "80"
 o.signcolumn = "yes"
-
 
 --
 -- undodir
@@ -54,7 +47,6 @@ end
 o.undofile = true
 o.undodir = undodir
 
-
 --
 -- file
 --
@@ -63,7 +55,6 @@ o.writebackup = false
 o.swapfile = false
 o.autoread = true
 o.autowrite = false
-
 
 --
 -- virtual line
