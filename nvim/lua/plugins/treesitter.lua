@@ -49,16 +49,16 @@ return {
 		},
 	},
 	config = function(_, opts)
-        require("nvim-treesitter").install(opts.ensure_installed)
+		require("nvim-treesitter").install(opts.ensure_installed)
 
-        vim.api.nvim_create_autocmd("FileType", {
-            callback = function(ev)
-                local lang = vim.treesitter.language.get_lang(ev.match)
+		vim.api.nvim_create_autocmd("FileType", {
+			callback = function(ev)
+				local lang = vim.treesitter.language.get_lang(ev.match)
 
-                if vim.tbl_contains(opts.ensure_installed, lang) then
-                    vim.treesitter.start()
-                end
-            end
-        })
-    end,
+				if vim.tbl_contains(opts.ensure_installed, lang) then
+					vim.treesitter.start()
+				end
+			end,
+		})
+	end,
 }
