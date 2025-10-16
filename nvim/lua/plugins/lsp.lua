@@ -1,56 +1,71 @@
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
+		build = ":MasonUpdate",
 		dependencies = {
 			"neovim/nvim-lspconfig",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			{
-				"stevearc/conform.nvim",
-				event = { "BufWritePre" },
-				cmd = { "ConformInfo" },
-				keys = {
-					{
-						"<leader>F",
-						function()
-							require("conform").format({ async = true, lsp_fallback = true })
-						end,
-						mode = "",
-						desc = "Format buffer",
-					},
-				},
-				opts = {
-					notify_on_error = true,
-					log_level = vim.log.levels.INFO,
-					formatters_by_ft = {
-						lua = { "stylua" },
-						-- add other filetypes and their formatters here
-					},
-				},
+		},
+		opts_extend = {
+			"ensure_installed",
+			"ensure_enabled",
+		},
+		opts = {
+			-- lsp name in mason
+			-- check with :Mason
+			ensure_installed = {
+				"lua-language-server",
+				"stylua",
+				"tree-sitter-cli",
+				-- add additional lsp's to install here
+			},
+			-- lsp name in lspconfig
+			-- check at https://github.com/neovim/nvim-lspconfig
+			ensure_enabled = {
+				"lua_ls",
+				-- add additional lsp's to enable here
 			},
 		},
-		config = function()
-			require("mason").setup()
-			require("mason-tool-installer").setup({
-				-- this is the name of the language server in mason
-				-- add other lsp's here
-				ensure_installed = {
-					"lua-language-server",
-					"stylua",
-				},
-			})
+		config = function(_, opts)
+			require("mason").setup(opts)
 
-			-- this is the name of the language server in lspconfig
-			-- add other lsp's here
-			vim.lsp.enable({
-				"lua_ls",
-			})
+			local mr = require("mason-registry")
+			mr.refresh(function()
+				for _, tool in ipairs(opts.ensure_installed) do
+					local p = mr.get_package(tool)
+					if not p:is_installed() then
+						p:install()
+					end
+				end
+			end)
 
-			local map = vim.keymap.set
-			map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { desc = "[W]orkspace [A]dd Folder" })
-			map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { desc = "[W]orkspace [R]emove Folder" })
-			map("n", "<leader>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, { desc = "[W]orkspace [L]ist Folders" })
+			vim.lsp.enable(opts.ensure_enabled)
 		end,
+	},
+
+	{
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		dependencies = {
+			"mason-org/mason.nvim",
+		},
+		keys = {
+			{
+				"<leader>F",
+				function()
+					require("conform").format({ async = true, lsp_fallback = true })
+				end,
+				mode = "",
+				desc = "Format buffer",
+			},
+		},
+		opts = {
+			notify_on_error = true,
+			log_level = vim.log.levels.INFO,
+			formatters_by_ft = {
+				lua = { "stylua" },
+				-- add other formatters here
+			},
+		},
 	},
 }
