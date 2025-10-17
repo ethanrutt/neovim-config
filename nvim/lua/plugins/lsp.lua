@@ -11,15 +11,15 @@ return {
 		},
 		opts = {
 			-- lsp name in mason
-			-- check with :Mason
+			-- :Mason
 			ensure_installed = {
 				"lua-language-server",
 				"stylua",
 				"tree-sitter-cli",
-				-- add additional lsp's to install here
+				-- add additional tools to install with mason here
 			},
 			-- lsp name in lspconfig
-			-- check at https://github.com/neovim/nvim-lspconfig
+			-- https://github.com/neovim/nvim-lspconfig
 			ensure_enabled = {
 				"lua_ls",
 				-- add additional lsp's to enable here
@@ -64,7 +64,7 @@ return {
 			log_level = vim.log.levels.INFO,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				-- add other formatters here
+				-- add additional formatters here
 			},
 		},
 	},

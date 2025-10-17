@@ -11,8 +11,8 @@ return {
 	},
 	opts = {
 		ensure_installed = {
-            -- add more treesitter parsers here
-            -- check at https://github.com/tree-sitter/tree-sitter/wiki/List-of-parsers
+            -- add additional treesitter parsers here
+            -- https://github.com/tree-sitter/tree-sitter/wiki/List-of-parsers
 			"bash",
 			"c",
 			"cpp",
