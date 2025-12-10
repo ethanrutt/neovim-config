@@ -1,5 +1,6 @@
 return {
-        "ibhagwan/fzf-lua",
+	"ibhagwan/fzf-lua",
+	dependencies = { "nvim-mini/mini.icons", version = "*", opts = {} },
 	config = function()
 		local fzf = require("fzf-lua")
 		local map = vim.keymap.set

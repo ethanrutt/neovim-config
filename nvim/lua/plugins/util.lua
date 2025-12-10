@@ -1,6 +1,4 @@
 return {
-	{ "nvim-mini/mini.icons", version = "*", opts = {} },
-
 	{
 		"nvim-mini/mini.trailspace",
 		version = "*",
