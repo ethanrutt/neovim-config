@@ -1,5 +1,5 @@
 return {
-	"ibhagwan/fzf-lua",
+        "ibhagwan/fzf-lua",
 	config = function()
 		local fzf = require("fzf-lua")
 		local map = vim.keymap.set
@@ -39,20 +39,13 @@ return {
 
 		map("n", "<leader>ff", smart_find_files, { desc = "[F]ind [F]iles" })
 		map("n", "<leader>fb", fzf.buffers, { desc = "[F]ind [B]uffers" })
-		map("n", "<leader><space>", fzf.buffers, { desc = "[ ] Search buffers" })
+
 		map("n", "<leader>sg", fzf.live_grep_native, { desc = "[S]earch with [G]rep" })
 		map("n", "<leader>/", fzf.lgrep_curbuf, { desc = "[/] Fuzzily search current buffer" })
 
 		map("n", "<leader>gd", fzf.lsp_definitions, { desc = "[G]oto [D]efinition" })
 		map("n", "<leader>gr", fzf.lsp_references, { desc = "[G]oto [R]eferences" })
-		map("n", "<leader>gI", fzf.lsp_implementations, { desc = "[G]oto [I]mplementation" })
-		map("n", "<leader>D", fzf.lsp_typedefs, { desc = "Type [D]efinition" })
-		map("n", "<leader>ds", fzf.lsp_document_symbols, { desc = "[D]ocument [S]ymbols" })
-		map("n", "<leader>ws", fzf.lsp_live_workspace_symbols, { desc = "[W]orkspace [S]ymbols" })
 
-		map("n", "<leader>sk", fzf.keymaps, { desc = "[S]earch [K]eymaps" })
-		map("n", "<leader>sh", fzf.helptags, { desc = "[S]earch [H]elp tags" })
-		map("n", "<leader>sc", fzf.commands, { desc = "[S]earch [C]ommands" })
-		map("n", "<leader>sm", fzf.manpages, { desc = "[S]earch [M]anpages" })
+		map("n", "<leader>sr", fzf.resume, { desc = "[S]earch [R]esume" })
 	end,
 }
