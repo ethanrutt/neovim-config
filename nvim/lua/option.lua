@@ -1,5 +1,7 @@
 local o = vim.o
 
+vim.cmd.colorscheme("habamax")
+
 --
 -- basic
 --
