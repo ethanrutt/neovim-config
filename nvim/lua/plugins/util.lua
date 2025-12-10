@@ -1,8 +1,5 @@
 return {
-	{ "windwp/nvim-ts-autotag", event = "InsertEnter", opts = {} },
 	{ "nvim-mini/mini.icons", version = "*", opts = {} },
-	{ "nvim-mini/mini.surround", version = "*", opts = {} },
-	{ "nvim-mini/mini.pairs", version = "*", opts = {} },
 
 	{
 		"nvim-mini/mini.trailspace",
