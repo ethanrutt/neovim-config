@@ -33,6 +33,10 @@ map("v", ">", ">gv", { desc = "Indent right and reselect" })
 --    to exit vim" every single time, which is annoying
 map({ "n", "v", "s", "x", "i" }, "<C-c>", "<Esc>")
 
+-- don't insert C-c character after pressing r, instead just return to normal
+-- mode
+map("n", "r<C-c>", "<Nop>")
+
 --
 -- keep cursor in middle while jumping
 --
@@ -52,12 +56,6 @@ map("n", "<C-b>", "<C-b>zz")
 -- forward and backwards in jump list
 map("n", "<C-o>", "<C-o>zz")
 map("n", "<C-i>", "<C-i>zz")
-
---
--- Quickfix List
---
-map("n", "<Space>co", vim.cmd.copen, { desc = "Open quickfix list window" })
-map("n", "<Space>cl", vim.cmd.ccl, { desc = "Close quickfix list window" })
 
 --
 -- Diagnostic List
