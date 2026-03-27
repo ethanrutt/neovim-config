@@ -69,18 +69,6 @@ end, { desc = "Go to next diagnostic message" })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
---
--- nvimdiff
---
-map("n", "<leader>gh", "<cmd>diffget LOCAL<CR><cmd>diffupdate<CR>", { desc = "diffget LOCAL change into working file" })
-map(
-	"n",
-	"<leader>gl",
-	"<cmd>diffget REMOTE<CR><cmd>diffupdate<CR>",
-	{ desc = "diffget REMOTE change into working file" }
-)
-map("n", "<leader>gk", "<cmd>diffget BASE<CR><cmd>diffupdate<CR>", { desc = "diffget BASE change into working file" })
-
 ---
 --- toggles
 ---
