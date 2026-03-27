@@ -48,13 +48,5 @@ return {
 		map("n", "<leader>g", fzf.git_status, { desc = "[G]it Status" })
 
 		map("n", "<leader>l", fzf.lsp_code_actions, { desc = "[L]SP Code actions" })
-
-		map("n", "<leader>ff", smart_find_files, { desc = "[F]ind [F]iles" })
-		map("n", "<leader>fb", fzf.builtin, { desc = "[F]ind [B]uiltin pickers" })
-		map("n", "<leader>fh", fzf.helptags, { desc = "[F]ind Vim [H]elptags" })
-		map("n", "<leader>fm", fzf.manpages, { desc = "[F]ind [M]anpages" })
-		map("n", "<leader>fp", fzf.registers, { desc = "[F]ind in registers to [P]aste" })
-		map("n", "<leader>fq", fzf.quickfix, { desc = "[F]ind in [Q]uickfix" })
-		map("n", "<leader>fl", fzf.loclist, { desc = "[F]ind in [L]oclist" })
 	end,
 }
