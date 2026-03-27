@@ -38,21 +38,20 @@ return {
 			end
 		end
 
-		map("n", "<leader>sf", smart_find_files, { desc = "[S]earch [F]iles" })
-		map("n", "<leader>sb", fzf.buffers, { desc = "[S]earch [B]uffers" })
-		map("n", "<leader>sg", fzf.live_grep_native, { desc = "[S]earch with [G]rep" })
-		map("n", "<leader>sr", fzf.resume, { desc = "[S]earch [R]esume" })
-		map("n", "<leader>sc", fzf.commands, { desc = "[S]earch [C]ommands" })
+		map("n", "<leader>f", smart_find_files, { desc = "Search [F]iles" })
+		map("n", "<leader>b", fzf.buffers, { desc = "Search [B]uffers" })
+		map("n", "<leader>s", fzf.live_grep_native, { desc = "Search with [G]rep" })
+		map("n", "<leader>r", fzf.resume, { desc = "[R]esume Search" })
+		map("n", "<leader>c", fzf.commands, { desc = "Search [C]ommands" })
 		map("n", "<leader>/", fzf.lgrep_curbuf, { desc = "[/] Fuzzily search current buffer" })
 
-		map("n", "<leader>gs", fzf.git_status, { desc = "[G]it [S]tatus" })
+		map("n", "<leader>g", fzf.git_status, { desc = "[G]it Status" })
 
-		map("n", "<leader>lc", fzf.lsp_code_actions, { desc = "[L]SP [C]ode actions" })
-		map("n", "<leader>ld", fzf.lsp_document_symbols, { desc = "[L]SP [D]ocument symbols" })
+		map("n", "<leader>l", fzf.lsp_code_actions, { desc = "[L]SP Code actions" })
 
 		map("n", "<leader>ff", smart_find_files, { desc = "[F]ind [F]iles" })
 		map("n", "<leader>fb", fzf.builtin, { desc = "[F]ind [B]uiltin pickers" })
-		map("n", "<leader>fh", fzf.helptags, { desc = "[F]ind [H]elp" })
+		map("n", "<leader>fh", fzf.helptags, { desc = "[F]ind Vim [H]elptags" })
 		map("n", "<leader>fm", fzf.manpages, { desc = "[F]ind [M]anpages" })
 		map("n", "<leader>fp", fzf.registers, { desc = "[F]ind in registers to [P]aste" })
 		map("n", "<leader>fq", fzf.quickfix, { desc = "[F]ind in [Q]uickfix" })
